@@ -14,7 +14,7 @@ Suppose your instance is running and has a public IP address, but `ssh` cannot c
 
 **Your answer:** Which path did you take in the console (service → page → tab)?
 
-...
+EC2 -> Security Groups -> launch wizard 1 (description as security group for lab 7 ec2) -> inbound rules shows the port range and source ips that are accepted
 
 ## 2. Lambda: why didn't my function run?
 
@@ -26,7 +26,7 @@ Suppose you uploaded a new book to your bucket, but several minutes later MongoD
 
 **Your answer:** Which path did you take in the console (service → page → tab)?
 
-...
+Lambda -> event functions -> select given lambda function -> Configuration tab -> what starts the lambda function is listed under the triggers tab
 
 ## 3. Lambda: where do I find the error?
 
@@ -38,7 +38,7 @@ Suppose the function did start, but MongoDB still has no document for the book. 
 
 **Your answer:** Which path did you take in the console (service → page → tab)?
 
-...
+Cloudwatch -> Logs -> Log Management -> given lambda function -> latest log stream -> expand logs to view more details
 
 ## 4. EC2 or Lambda: a backlog or new uploads?
 
@@ -54,4 +54,5 @@ For comparison, typical times in this lab:
 
 **Your answer:**
 
-...
+Case A: EC2 because it is better for batch processing, and the scenario minimizes wait time, which would otherwise incur more costs. Since all the work is known and upfront, once the EC2 starts it can process everything at once and then be terminated if needed, maximizing compute while saving the most. 
+Case B: Lambda because of the random times scenario and each book needs to be analyzed within a minute. Lambda is perfect for this in comparison to EC2 because there is no cost on waiting, which the period of waiting is unknown, and there is quick cold start for very fast analyses.
